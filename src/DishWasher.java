@@ -1,13 +1,15 @@
 public class DishWasher {
     private boolean hasWorkToDo;
 
-    public DishWasher(){
-        hasWorkToDo = false;
+    public void setHasWorkToDo (boolean hasWorkToDo){
+        this.hasWorkToDo = hasWorkToDo;
     }
 
-    public void loadDishwasher(){
-        System.out.println("DishWasher loading!");
-        hasWorkToDo = true;
-        System.out.println("hasWorkToDo:" + hasWorkToDo);
+    public void doDishes(){
+        if(hasWorkToDo){
+            System.out.println("Washing dishes...");
+            setHasWorkToDo(false);
+            System.out.println("Stop washing.");
+        }
     }
 }

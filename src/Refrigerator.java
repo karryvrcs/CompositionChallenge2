@@ -1,13 +1,15 @@
 public class Refrigerator {
     private boolean hasWorkToDo;
 
-    public Refrigerator(){
-        hasWorkToDo = false;
+    public void setHasWorkToDo (boolean hasWorkToDo){
+        this.hasWorkToDo = hasWorkToDo;
     }
 
     public void orderFood(){
-        hasWorkToDo = true;
-        System.out.println("Refrigerator Order Food!");
-        System.out.println("hasWorkToDo:" + hasWorkToDo);
+        if (hasWorkToDo){
+            System.out.println("Ordering food...");
+            setHasWorkToDo(false);
+            System.out.println("Stop ordering.");
+        }
     }
 }

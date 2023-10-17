@@ -5,40 +5,54 @@ public class SmartKitchen {
     private DishWasher dishWasher;
     private Refrigerator iceBox;
 
+    public SmartKitchen(){
+        this.brewMaster = new CoffeeMaker();
+        this.dishWasher = new DishWasher();
+        this.iceBox = new Refrigerator();
+    }
+
     public SmartKitchen(CoffeeMaker brewMaster, DishWasher dishWasher, Refrigerator iceBox) {
         this.brewMaster = brewMaster;
         this.dishWasher = dishWasher;
         this.iceBox = iceBox;
     }
 
-    public void addWater(){
-        brewMaster.addWater();
+    public CoffeeMaker getBrewMaster() {
+        return brewMaster;
     }
 
-    public void pourMilk(){
-        iceBox.orderFood();
+    public DishWasher getDishWasher() {
+        return dishWasher;
     }
 
-    public void loadDishwasher(){
-        dishWasher.loadDishwasher();
+    public Refrigerator getIceBox() {
+        return iceBox;
     }
+
+//    public void pourMilk(){
+//        iceBox.orderFood();
+//    }
+
+//    public void loadDishwasher(){
+//        dishWasher.loadDishwasher();
+//    }
 
     public void setKitchenState(boolean coffee, boolean fridge, boolean dish){
-        if(coffee){
-            addWater();
-        }
-        if(fridge){
-            pourMilk();
-        }
-        if(dish){
-            loadDishwasher();
-        }
-
+         brewMaster.setHasWorkToDo(coffee);
+         dishWasher.setHasWorkToDo(dish);
+         iceBox.setHasWorkToDo(fridge);
     }
 
     public void doKitchenWork(){
-
+        brewMaster.brewCoffee();
+        iceBox.orderFood();
+        dishWasher.doDishes();
     }
+
+    //try to aim to use composition over inheritance
+
+
+
 
 
 }
